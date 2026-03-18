@@ -19,11 +19,12 @@ export interface LinkSection {
   label: string;
   cols: 1 | 2;
   links: LinkItem[];
+  soon?: boolean;
 }
 
 export const sections: LinkSection[] = [
   {
-    label: "Principal",
+    label: "01",
     cols: 2,
     links: [
       {
@@ -64,7 +65,7 @@ export const sections: LinkSection[] = [
     ],
   },
   {
-    label: "Treinamento",
+    label: "02",
     cols: 2,
     links: [
       {
@@ -75,55 +76,11 @@ export const sections: LinkSection[] = [
         color: "pink",
       },
       {
-        href: "#",
-        title: "Use IA",
-        sub: "Em breve",
-        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/></svg>`,
-        color: "mono",
-        badges: [{ label: "Soon", color: "mono" }],
-      },
-    ],
-  },
-  {
-    label: "Ferramentas",
-    cols: 2,
-    links: [
-      {
         href: "https://neo-convert.site/",
         title: "Convert",
         sub: "PDF Tools",
         icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="12" y2="17"/></svg>`,
         color: "acqua",
-      },
-    ],
-  },
-  {
-    label: "Projetos",
-    cols: 2,
-    links: [
-      {
-        href: "#",
-        title: "Open Source",
-        sub: "OSS",
-        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
-        color: "pink",
-        badges: [{ label: "Soon", color: "mono" }],
-      },
-      {
-        href: "#",
-        title: "WOD Game",
-        sub: "Gamificação",
-        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
-        color: "neon",
-        badges: [{ label: "Soon", color: "mono" }],
-      },
-      {
-        href: "#",
-        title: "NSFactory",
-        sub: "Tokenization",
-        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
-        color: "pink",
-        badges: [{ label: "Soon", color: "mono" }],
       },
       {
         href: "https://neoprotocol.space/",
@@ -132,6 +89,41 @@ export const sections: LinkSection[] = [
         icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
         color: "acqua",
         badges: [{ label: "Live", color: "neon", pulse: true }],
+      },
+    ],
+  },
+  {
+    label: "05",
+    cols: 2,
+    soon: true,
+    links: [
+      {
+        href: "#",
+        title: "Use IA",
+        sub: "Em breve",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/></svg>`,
+        color: "mono",
+      },
+      {
+        href: "#",
+        title: "Open Source",
+        sub: "OSS",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
+        color: "mono",
+      },
+      {
+        href: "#",
+        title: "WOD Game",
+        sub: "Gamificação",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`,
+        color: "mono",
+      },
+      {
+        href: "#",
+        title: "NSFactory",
+        sub: "Tokenization",
+        icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
+        color: "mono",
       },
     ],
   },

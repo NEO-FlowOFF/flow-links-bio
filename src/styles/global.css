@@ -1,31 +1,21 @@
-/* ── NEØ FlowOFF — Design Tokens ── */
+/* ── NEØ FlowOFF ── */
 :root {
-  --bg: #030305;
-  --surface: #0c0c12;
-  --glass: rgba(255, 255, 255, 0.05);
-  --glass-h: rgba(255, 255, 255, 0.09);
-  --border: rgba(255, 255, 255, 0.07);
-  --border-h: rgba(255, 255, 255, 0.16);
+  --bg: #000;
+  --card: #0d0d0f;
+  --card-h: #141416;
+  --border: rgba(255, 255, 255, 0.04);
 
   --pink: #ff00cc;
   --pink-s: #ff40d9;
-  --pink-dim: rgba(255, 0, 204, 0.14);
-  --pink-glow: rgba(255, 0, 204, 0.25);
+  --pink-glow: rgba(255, 0, 204, 0.2);
 
-  --neon: #d8e61d;
-  --neon-dim: rgba(216, 230, 29, 0.12);
-  --neon-glow: rgba(216, 230, 29, 0.25);
-
+  --neon: #c8d41a;
+  --neon-glow: rgba(200, 212, 26, 0.35);
   --acqua: #00f2ff;
-  --acqua-dim: rgba(0, 242, 255, 0.12);
-  --acqua-glow: rgba(0, 242, 255, 0.3);
 
-  --amber: #ffaa00;
-  --amber-dim: rgba(255, 170, 0, 0.12);
-
-  --text: rgba(255, 255, 255, 0.94);
-  --text-2: rgba(255, 255, 255, 0.6);
-  --text-3: rgba(255, 255, 255, 0.35);
+  --text: rgba(255, 255, 255, 0.92);
+  --text-2: rgba(255, 255, 255, 0.4);
+  --text-3: rgba(255, 255, 255, 0.22);
 
   --display: "Figtree", sans-serif;
   --mono: "DM Mono", monospace;
@@ -41,4 +31,350 @@ body {
   font-family: var(--display);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+.mesh {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(ellipse 50% 35% at 50% -5%, rgba(200, 212, 26, 0.025) 0%, transparent 70%);
+}
+
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.18;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+.page {
+  position: relative; z-index: 1;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 3rem 0.85rem 4rem;
+}
+
+/* ── SECTIONS ── */
+.section { margin-bottom: 1.5rem; }
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 0.55rem;
+}
+
+.section-label::before,
+.section-label::after {
+  content: ""; flex: 1; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+/* ── GRID ── */
+.link-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* ═══════════════════════════════════
+   WIDGET CARD
+   ═══════════════════════════════════ */
+.lc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0.85rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  background: var(--card);
+  text-decoration: none;
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.3s ease;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+/* inner gradient — subtle depth like real iOS widgets */
+.lc::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 80% 100%, rgba(200, 212, 26, 0.02) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* border stroke — gradient mask technique */
+.lc::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 30%,
+    transparent 60%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.lc:hover {
+  background: var(--card-h);
+  transform: scale(1.03);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(200, 212, 26, 0.03),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.lc:hover::after {
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(200, 212, 26, 0.06) 40%,
+    transparent 70%
+  );
+}
+
+.lc:active {
+  transform: scale(0.95);
+  transition-duration: 0.08s;
+}
+
+/* stagger */
+.link-grid .lc:nth-child(1) { animation: cardIn 0.3s ease both; }
+.link-grid .lc:nth-child(2) { animation: cardIn 0.3s ease both 0.06s; }
+.link-grid .lc:nth-child(3) { animation: cardIn 0.3s ease both 0.12s; }
+.link-grid .lc:nth-child(4) { animation: cardIn 0.3s ease both 0.18s; }
+
+@keyframes cardIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ── SOON SECTION ── */
+.section-soon .link-grid {
+  filter: blur(2px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.section-soon {
+  position: relative;
+  cursor: pointer;
+}
+
+.section-soon .lc::before,
+.section-soon .lc::after { display: none; }
+
+/* ── "EM BREVE" toast ── */
+.soon-toast {
+  position: fixed;
+  transform: translate(-50%, -50%) scale(0.6);
+  font-family: var(--display);
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+  text-shadow: 0 0 30px rgba(200, 212, 26, 0.3);
+  animation: soonPop 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes soonPop {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.6); }
+  50%  { opacity: 0.66; transform: translate(-50%, -50%) scale(1.1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.3); }
+}
+
+/* ── SOON CARD (legacy) ── */
+.lc.lc-soon {
+  opacity: 0.35;
+  pointer-events: none;
+}
+.lc.lc-soon::before { display: none; }
+
+/* ═══════════════════════════════════
+   ICON — embossed, revealed by light
+   ═══════════════════════════════════ */
+.lc-icon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.08);
+  filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.06));
+  transition: color 0.4s, filter 0.4s;
+  position: relative;
+}
+
+.lc:hover .lc-icon {
+  color: rgba(255, 255, 255, 0.15);
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.1))
+    drop-shadow(0 0 12px rgba(200, 212, 26, 0.08));
+}
+
+/* ── TEXT ── */
+.lc-body { min-width: 0; }
+
+.lc-title {
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.lc-sub {
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  color: var(--text-3);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.12rem;
+}
+
+/* ── BADGES ── */
+.lc-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 0.45rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.18rem 0.5rem;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  background: rgba(200, 212, 26, 0.06);
+  color: var(--neon);
+}
+
+.badge.acqua {
+  background: rgba(0, 242, 255, 0.05);
+  color: var(--acqua);
+}
+
+.badge.pink {
+  background: rgba(255, 0, 204, 0.06);
+  color: var(--pink-s);
+}
+
+.badge.mono {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-3);
+}
+
+.badge.live::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 6px currentColor;
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px currentColor; }
+  50% { opacity: 0.3; box-shadow: 0 0 2px currentColor; }
+}
+
+/* ── SOUNDCLOUD PLAYER ── */
+.sc-player {
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0.4;
+  transition: opacity 0.3s;
+}
+
+.sc-player:hover {
+  opacity: 0.7;
+}
+
+.sc-player iframe {
+  display: block;
+}
+
+/* ── FOOTER ── */
+.hub-footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+  animation: fadeUp 0.3s ease both 0.6s;
+}
+
+.hub-footer-brand {
+  font-weight: 900;
+  font-size: 0.7rem;
+  color: var(--text-3);
+}
+
+.hub-footer-brand .neo {
+  color: var(--pink);
+  opacity: 0.4;
+}
+
+.hub-footer-sub {
+  font-family: var(--mono);
+  font-size: 0.42rem;
+  color: var(--text-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+  opacity: 0.4;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section:nth-child(1) { animation: fadeUp 0.3s ease both 0.15s; }
+.section:nth-child(2) { animation: fadeUp 0.3s ease both 0.25s; }
+.section:nth-child(3) { animation: fadeUp 0.3s ease both 0.35s; }
+.section:nth-child(4) { animation: fadeUp 0.3s ease both 0.45s; }
+
+@keyframes ripple { to { transform: scale(1); opacity: 0; } }
+
+@media (max-width: 420px) {
+  .page { padding: 2rem 0.65rem 3rem; }
+  .lc { padding: 0.75rem; }
 }

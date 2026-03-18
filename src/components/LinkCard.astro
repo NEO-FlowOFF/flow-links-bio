@@ -12,22 +12,22 @@ interface Props {
 }
 
 const { href, title, sub, icon, color, badges = [] } = Astro.props;
+const isSoon = !href || href === "#";
+const Tag = isSoon ? "div" : "a";
 ---
 
-<a 
-  href={href} 
-  target="_blank" 
-  rel="noopener" 
-  class:list={["lc", { "lc-soon": href === "#" }]}
+<Tag
+  {...(isSoon ? {} : { href, target: "_blank", rel: "noopener" })}
+  class:list={["lc", { "lc-soon": isSoon }]}
 >
   <div class:list={["lc-icon", color]}>
     <Fragment set:html={icon} />
   </div>
-  
+
   <div class="lc-body">
     <div class="lc-title">{title}</div>
     <div class="lc-sub">{sub}</div>
-    
+
     {badges.length > 0 && (
       <div class="lc-badges">
         {badges.map((b) => (
@@ -36,4 +36,4 @@ const { href, title, sub, icon, color, badges = [] } = Astro.props;
       </div>
     )}
   </div>
-</a>
+</Tag>

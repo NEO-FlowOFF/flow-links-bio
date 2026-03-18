@@ -12,15 +12,28 @@ import { sections } from "../data/links";
 
     {
       sections.map((section) => (
-        <HubSection label={section.label}>
+        <section class:list={["section", { "section-soon": section.soon }]}>
+          <div class="section-label">{section.label}</div>
           <div class="link-grid">
             {section.links.map((link) => (
               <LinkCard {...link} />
             ))}
           </div>
-        </HubSection>
+        </section>
       ))
     }
+
+    <div class="sc-player">
+      <iframe
+        id="sc-widget"
+        width="100%"
+        height="20"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/modestep/bodybag&auto_play=true&show_artwork=false&show_playcount=false&show_user=false&buying=false&sharing=false&download=false&color=%23c8d41a&visual=false"
+      ></iframe>
+    </div>
 
     <footer class="hub-footer">
       <div class="hub-footer-brand">
@@ -34,6 +47,21 @@ import { sections } from "../data/links";
 </Base>
 
 <script>
+  /* "EM BREVE" toast on soon section tap */
+  document.querySelectorAll<HTMLElement>(".section-soon").forEach((el) => {
+    el.addEventListener("click", (e: MouseEvent) => {
+      const existing = document.querySelector(".soon-toast");
+      if (existing) existing.remove();
+      const toast = document.createElement("div");
+      toast.className = "soon-toast";
+      toast.style.left = `${e.clientX}px`;
+      toast.style.top = `${e.clientY}px`;
+      toast.textContent = "EM BREVE";
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 1300);
+    });
+  });
+
   /* ripple on tap for mobile feel */
   document.querySelectorAll<HTMLElement>(".lc").forEach((el) => {
     el.addEventListener("pointerdown", (e: PointerEvent) => {
