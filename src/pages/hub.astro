@@ -377,6 +377,19 @@
         transform: scale(0.98);
       }
 
+      /* ── SOON CARD (desfocado/desbotado) ── */
+      .lc.lc-soon {
+        opacity: 0.42;
+        filter: blur(1.2px) grayscale(40%);
+        cursor: default;
+        pointer-events: none; /* Remove clique e hover */
+        transform: none !important;
+      }
+      .lc.lc-soon::after {
+        display: none;
+      }
+
+
       /* FEATURED: wider/taller card */
       .lc.featured {
         padding: 1.35rem 1.25rem;
@@ -878,10 +891,8 @@
 
           <!-- USE IA -->
           <a
-            href="https://proia.vercel.app/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
+            href="#"
+            class="lc lc-soon"
           >
             <div class="lc-icon amber">
               <svg
@@ -909,6 +920,7 @@
             </div>
             <div class="lc-arrow">↗</div>
           </a>
+
         </div>
       </section>
 
@@ -955,10 +967,8 @@
         <div class="link-grid cols-2">
           <!-- OPEN SOURCE -->
           <a
-            href="https://www.flowpaycore.com/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
+            href="#"
+            class="lc lc-soon"
           >
             <div class="lc-icon green">
               <svg
@@ -987,12 +997,11 @@
             <div class="lc-arrow">↗</div>
           </a>
 
+
           <!-- GAMIFICAÇÃO -->
           <a
-            href="https://wod-landing.vercel.app/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
+            href="#"
+            class="lc lc-soon"
           >
             <div class="lc-icon amber">
               <svg
@@ -1019,12 +1028,11 @@
             <div class="lc-arrow">↗</div>
           </a>
 
+
           <!-- SAAS TOKENIZATION -->
           <a
-            href="https://www.nsfactory.xyz/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
+            href="#"
+            class="lc lc-soon"
           >
             <div class="lc-icon purple">
               <svg
@@ -1050,6 +1058,7 @@
             </div>
             <div class="lc-arrow">↗</div>
           </a>
+
 
           <!-- MAIN SPACE -->
           <a
