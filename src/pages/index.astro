@@ -47,10 +47,12 @@ import { sections } from "../data/links";
 </Base>
 
 <script>
-  document.querySelectorAll(".lc").forEach((el) => {
-    el.addEventListener("pointerdown", function (this: HTMLElement, e: PointerEvent) {
+  /* ripple on tap for mobile feel */
+  document.querySelectorAll<HTMLElement>(".lc").forEach((el) => {
+    el.addEventListener("pointerdown", (e: PointerEvent) => {
+      const target = e.currentTarget as HTMLElement;
       const r = document.createElement("span");
-      const rect = this.getBoundingClientRect();
+      const rect = target.getBoundingClientRect();
       const size = Math.max(rect.width, rect.height) * 2;
       r.style.cssText = `
         position:absolute;width:${size}px;height:${size}px;
@@ -58,8 +60,9 @@ import { sections } from "../data/links";
         border-radius:50%;background:rgba(255,255,255,0.05);
         transform:scale(0);animation:ripple 0.5s ease forwards;pointer-events:none;
       `;
-      this.appendChild(r);
+      target.appendChild(r);
       setTimeout(() => r.remove(), 600);
     });
   });
 </script>
+

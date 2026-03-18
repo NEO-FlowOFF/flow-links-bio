@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npm run dev:*)",
+      "Bash(npx astro dev:*)",
+      "Bash(./node_modules/.bin/astro dev:*)",
+      "Bash(curl:*)"
+    ]
+  }
+}
