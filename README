@@ -1,0 +1,30 @@
+precisamos implementar algo simples:
+
+flow-links-bio/
+├── public/
+│   ├── favicon.ico
+│   ├── android-icon-192x192.png
+│   └── og-image.png
+│
+├── src/
+│   ├── layouts/
+│   │   └── Base.astro          # <html>, <head>, meta, fonts
+│   │
+│   ├── components/
+│   │   ├── HubHeader.astro     # avatar ring + nome + tagline
+│   │   ├── HubSection.astro    # wrapper de seção com section-label
+│   │   ├── LinkCard.astro      # card individual (props: href, title, sub, icon, color, badges)
+│   │   └── BadgeChip.astro     # badge reutilizável (props: color, pulse, label)
+│   │
+│   ├── data/
+│   │   └── links.ts            # array tipado com todos os links/badges
+│   │
+│   ├── styles/
+│   │   └── global.css          # vars CSS, glass, animações, grid
+│   │
+│   └── pages/
+│       └── index.astro         # monta tudo: itera links.ts → LinkCard
+│
+├── astro.config.mjs
+├── tsconfig.json
+└── package.json

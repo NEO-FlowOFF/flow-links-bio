@@ -1,0 +1,65 @@
+---
+import Base from "../layouts/Base.astro";
+import HubHeader from "../components/HubHeader.astro";
+import HubSection from "../components/HubSection.astro";
+import LinkCard from "../components/LinkCard.astro";
+import { sections } from "../data/links";
+---
+
+<Base>
+  <div class="page">
+    <HubHeader />
+
+    {sections.map((section) => {
+      // Separate hero links from regular links
+      const heroLinks = section.links.filter((l) => l.hero);
+      const regularLinks = section.links.filter((l) => !l.hero);
+
+      return (
+        <HubSection label={section.label}>
+          {heroLinks.length > 0 && (
+            <div class="link-grid cols-1" style="margin-bottom:10px">
+              {heroLinks.map((link) => (
+                <LinkCard {...link} />
+              ))}
+            </div>
+          )}
+          {regularLinks.length > 0 && (
+            <div class:list={["link-grid", `cols-${section.cols}`]}>
+              {regularLinks.map((link) => (
+                <LinkCard {...link} />
+              ))}
+            </div>
+          )}
+        </HubSection>
+      );
+    })}
+
+    <footer class="hub-footer">
+      <div class="hub-footer-brand">
+        <span class="neo">NEØ</span> FlowOFF Agency
+      </div>
+      <div class="hub-footer-sub">
+        Goiânia · Brasil · Base Mainnet · neoflowoff.eth.limo
+      </div>
+    </footer>
+  </div>
+</Base>
+
+<script>
+  document.querySelectorAll(".lc").forEach((el) => {
+    el.addEventListener("pointerdown", function (this: HTMLElement, e: PointerEvent) {
+      const r = document.createElement("span");
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height) * 2;
+      r.style.cssText = `
+        position:absolute;width:${size}px;height:${size}px;
+        left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px;
+        border-radius:50%;background:rgba(255,255,255,0.05);
+        transform:scale(0);animation:ripple 0.5s ease forwards;pointer-events:none;
+      `;
+      this.appendChild(r);
+      setTimeout(() => r.remove(), 600);
+    });
+  });
+</script>

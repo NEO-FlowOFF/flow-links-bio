@@ -1,0 +1,23 @@
+---
+interface Props {
+  name?: string;
+  tagline?: string;
+  description?: string;
+}
+
+const {
+  name = "NEØ FlowOFF",
+  tagline = "Agency Hub · Goiânia · Base Mainnet",
+  description = "Infraestrutura Web3 + AI para o Brasil. Pagamentos, tokens, ferramentas e projetos — tudo em um lugar.",
+} = Astro.props;
+---
+
+<header class="hub-header">
+  <div class="avatar-wrap">
+    <div class="avatar-ring-mask"></div>
+    <div class="avatar-inner">NEØ</div>
+  </div>
+  <h1 class="hub-name"><span class="neo">NEØ</span> FlowOFF</h1>
+  <p class="hub-tagline">{tagline}</p>
+  <p class="hub-desc">{description}</p>
+</header>

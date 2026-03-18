@@ -1,0 +1,11 @@
+---
+interface Props {
+  label: string;
+  color: "pink" | "green" | "amber" | "blue" | "purple" | "mono";
+  pulse?: boolean;
+}
+
+const { label, color, pulse = false } = Astro.props;
+---
+
+<span class:list={["badge", color, { live: pulse }]}>{label}</span>
