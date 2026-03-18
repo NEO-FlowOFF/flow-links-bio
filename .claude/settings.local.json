@@ -5,7 +5,11 @@
       "Bash(npm run dev:*)",
       "Bash(npx astro dev:*)",
       "Bash(./node_modules/.bin/astro dev:*)",
-      "Bash(curl:*)"
+      "Bash(curl:*)",
+      "Bash(find /Users/nettomello/neomello/NEO-FlowOFF/flow-links-bio -name *.html -type f)",
+      "Bash(grep -E \"\\\\.\\(html|htm\\)$\")",
+      "Bash(npm run:*)",
+      "Bash(npx astro:*)"
     ]
   }
 }

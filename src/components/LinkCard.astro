@@ -9,47 +9,31 @@ interface Props {
   icon: string;
   color: BadgeColor;
   badges?: Badge[];
-  hero?: boolean;
-  featured?: boolean;
 }
 
-const { href, title, sub, icon, color, badges = [], hero = false, featured = false } = Astro.props;
+const { href, title, sub, icon, color, badges = [] } = Astro.props;
 ---
 
-{hero ? (
-  <a href={href} target="_blank" rel="noopener" class="lc lc-hero">
-    <div class="lc-hero-row">
-      <div style="display:flex;align-items:center;gap:0.9rem">
-        <div class={`lc-icon ${color}`} style="width:52px;height:52px;border-radius:18px;font-size:1.4rem">
-          <Fragment set:html={icon} />
-        </div>
-        <div>
-          <div class="lc-title" style="font-size:1.1rem">{title}</div>
-          <div class="lc-sub">{sub}</div>
-          {badges.length > 0 && (
-            <div class="lc-badges" style="margin-top:0.4rem">
-              {badges.map((b) => <BadgeChip label={b.label} color={b.color} pulse={b.pulse} />)}
-            </div>
-          )}
-        </div>
+<a 
+  href={href} 
+  target="_blank" 
+  rel="noopener" 
+  class:list={["lc", { "lc-soon": href === "#" }]}
+>
+  <div class:list={["lc-icon", color]}>
+    <Fragment set:html={icon} />
+  </div>
+  
+  <div class="lc-body">
+    <div class="lc-title">{title}</div>
+    <div class="lc-sub">{sub}</div>
+    
+    {badges.length > 0 && (
+      <div class="lc-badges">
+        {badges.map((b) => (
+          <BadgeChip label={b.label} color={b.color} pulse={b.pulse} />
+        ))}
       </div>
-      <div class="lc-hero-arrow">↗</div>
-    </div>
-  </a>
-) : (
-  <a href={href} target="_blank" rel="noopener" class:list={["lc", { featured }]}>
-    <div class={`lc-icon ${color}`}>
-      <Fragment set:html={icon} />
-    </div>
-    <div class="lc-body">
-      <div class="lc-title">{title}</div>
-      <div class="lc-sub">{sub}</div>
-      {badges.length > 0 && (
-        <div class="lc-badges">
-          {badges.map((b) => <BadgeChip label={b.label} color={b.color} pulse={b.pulse} />)}
-        </div>
-      )}
-    </div>
-    <div class="lc-arrow">↗</div>
-  </a>
-)}
+    )}
+  </div>
+</a>

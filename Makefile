@@ -1,7 +1,7 @@
 # NΞØ Protocol - Astro Flow Makefile
 # Powered by NEO-FlowOFF
 
-.PHONY: install dev build preview lint audit flow help
+.PHONY: install dev build preview lint audit clean clean-cache flow help
 
 # --- Variáveis ---
 SHELL := /bin/bash
@@ -38,13 +38,25 @@ lint:
 	@echo "🧹 Verificando erros de código..."
 	@npx astro check || (echo "❌ Erros de lint encontrados! Corrija-os antes de continuar." && exit 1)
 
+# --- Limpeza ---
+
+clean:
+	@echo "🧹 Limpando diretórios de build e cache..."
+	@rm -rf dist .astro node_modules
+	@echo "✅ Limpeza concluída!"
+
+clean-cache:
+	@echo "🧹 Limpando cache Astro..."
+	@rm -rf .astro
+	@echo "✅ Cache limpo!"
+
 # --- NΞØ Protocol: Fluxo Seguro de Commit e Push ---
 
 flow: audit lint build
 	@echo "🛡️ Protocolo NΞØ: Verificação de Segurança e Build concluída com sucesso."
 	@git status
 	@echo ""
-	@read -p "Digite a mensagem do commit (seguindo Conventional Commits, ex: feat: add styles): " msg; \
+	@read -p "Digite a mensagem do commit (seguindo Conventional Commits, ex: feat: refactor hub): " msg; \
 	if [ -z "$$msg" ]; then \
 		echo "❌ Erro: Mensagem de commit é obrigatória."; \
 		exit 1; \
@@ -53,18 +65,30 @@ flow: audit lint build
 	git commit -m "$$msg"; \
 	echo "📤 Enviando para o repositório remoto..."; \
 	git push origin $$(git rev-parse --abbrev-ref HEAD)
-	@echo "✅ Fluxo concluído! O Render.com iniciará o deploy automático."
+	@echo "✅ Fluxo concluído! O deploy automático iniciará em breve."
 
 # --- Ajuda ---
 
 help:
-	@echo "--------------------------------------------------------"
+	@echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 	@echo "           NΞØ FLOW - ASTRO COMMANDS                    "
-	@echo "--------------------------------------------------------"
-	@echo "  make dev      - Inicia o servidor de dev (Astro)"
-	@echo "  make build    - Gera a pasta /dist para produção"
-	@echo "  make preview  - Testa o build localmente"
-	@echo "  make audit    - Roda auditoria de segurança"
-	@echo "  make lint     - Valida o código Astro"
-	@echo "  make flow     - Protocolo NΞØ (Audit -> Lint -> Build -> Git)"
-	@echo "--------------------------------------------------------"
+	@echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+	@echo ""
+	@echo "  📦 Dependências:"
+	@echo "    make install     - Instala all dependências npm"
+	@echo ""
+	@echo "  🚀 Desenvolvimento:"
+	@echo "    make dev         - Inicia servidor de dev (Astro)"
+	@echo "    make build       - Gera /dist para produção"
+	@echo "    make preview     - Testa build localmente"
+	@echo ""
+	@echo "  🧹 Qualidade:"
+	@echo "    make audit       - Auditoria de segurança npm"
+	@echo "    make lint        - Valida código Astro"
+	@echo "    make clean       - Remove dist, .astro, node_modules"
+	@echo "    make clean-cache - Remove apenas cache Astro"
+	@echo ""
+	@echo "  🛡️  Protocolo NΞØ:"
+	@echo "    make flow        - Audit → Lint → Build → Commit → Push"
+	@echo ""
+	@echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

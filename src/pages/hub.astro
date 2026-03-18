@@ -1,14 +1,24 @@
+---
+import HubHeader from "../components/HubHeader.astro";
+import LinkCard from "../components/LinkCard.astro";
+import { sections } from "../data/links";
+---
+
 <!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>NEØ FlowOFF | Agency Hub · Web3 + AI</title>
     <meta
       name="description"
       content="NEØ FlowOFF: Sua infraestrutura completa de Web3 e IA na Base Mainnet. Hub central para tokens, pagamentos, treinamento em IA e ferramentas de automação."
     />
-    <meta name="keywords" content="NEO FlowOFF, Web3, Blockchain, AI, Inteligência Artificial, Base Mainnet, Crypto, Agency Hub, Pagamentos Web3, Tokens" />
+    <meta
+      name="keywords"
+      content="NEO FlowOFF, Web3, Blockchain, AI, Inteligência Artificial, Base Mainnet, Crypto, Agency Hub, Pagamentos Web3, Tokens"
+    />
     <meta name="author" content="NEØ FlowOFF Agency" />
     <link rel="canonical" href="https://flow-links-bio.pages.dev/hub" />
 
@@ -23,13 +33,15 @@
     <link rel="manifest" href="/manifest.json" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-
     <!-- Open Graph / SEO -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
     <meta property="og:site_name" content="NEØ FlowOFF Agency" />
     <meta property="og:title" content="NEØ FlowOFF — O Hub da Nova Economia" />
-    <meta property="og:description" content="Acelere seus projetos com nossa infraestrutura Web3 + AI. Tudo em um lugar na Base Mainnet." />
+    <meta
+      property="og:description"
+      content="Acelere seus projetos com nossa infraestrutura Web3 + AI. Tudo em um lugar na Base Mainnet."
+    />
     <meta property="og:image" content="/og-image.png" />
     <meta property="og:url" content="https://flow-links-bio.pages.dev/hub" />
 
@@ -38,9 +50,11 @@
     <meta name="twitter:site" content="@neoflowoff" />
     <meta name="twitter:creator" content="@neoflowoff" />
     <meta name="twitter:title" content="NEØ FlowOFF — Agency Hub" />
-    <meta name="twitter:description" content="Infraestrutura Web3 + IA para todos. Pagamentos e ferramentas On-Chain." />
+    <meta
+      name="twitter:description"
+      content="Infraestrutura Web3 + IA para todos. Pagamentos e ferramentas On-Chain."
+    />
     <meta name="twitter:image" content="/og-image.png" />
-
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,15 +76,18 @@
         --pink-s: #ff40d9;
         --pink-dim: rgba(255, 0, 204, 0.16);
         --pink-glow: rgba(255, 0, 204, 0.28);
-        --green: #d8e61d;
-        --green-dim: rgba(216, 230, 29, 0.14);
+        --neon: #d8e61d;
+        --neon-dim: rgba(216, 230, 29, 0.14);
+        --neon-glow: rgba(216, 230, 29, 0.25);
+        --acqua: #00ffaa;
+        --acqua-dim: rgba(0, 255, 170, 0.14);
+        --acqua-glow: rgba(0, 255, 170, 0.4);
         --amber: #ffaa00;
         --amber-dim: rgba(255, 170, 0, 0.14);
-        --blue: #d8e61d;
-        --blue-dim: rgba(216, 230, 29, 0.14);
-        --purple: #d8e61d;
-        --purple-dim: rgba(216, 230, 29, 0.14);
-
+        --blue: #0aa;
+        --blue-dim: rgba(0, 170, 200, 0.14);
+        --purple: #9955ff;
+        --purple-dim: rgba(153, 85, 255, 0.14);
         --text: rgba(255, 255, 255, 0.9);
         --text-2: rgba(255, 255, 255, 0.52);
         --text-3: rgba(255, 255, 255, 0.28);
@@ -89,6 +106,7 @@
         margin: 0;
         padding: 0;
       }
+
       html {
         scroll-behavior: smooth;
       }
@@ -150,125 +168,6 @@
         padding: 3rem 1.25rem 5rem;
       }
 
-      /* ── HEADER ── */
-      .hub-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        margin-bottom: 3rem;
-        gap: 0;
-      }
-
-      /* avatar ring */
-      .avatar-wrap {
-        position: relative;
-        width: 88px;
-        height: 88px;
-        margin-bottom: 1.25rem;
-        animation: fadeUp 0.5s ease both 0.05s;
-      }
-
-      .avatar-ring {
-        position: absolute;
-        inset: -6px;
-        border-radius: 50%;
-        background: conic-gradient(
-          var(--pink) 0deg,
-          var(--purple) 90deg,
-          var(--blue) 180deg,
-          var(--green) 270deg,
-          var(--pink) 360deg
-        );
-        animation: spin 8s linear infinite;
-        opacity: 0.7;
-      }
-
-      .avatar-ring-mask {
-        position: absolute;
-        inset: -6px;
-        border-radius: 50%;
-        background: conic-gradient(
-          var(--pink) 0deg,
-          var(--purple) 90deg,
-          var(--blue) 180deg,
-          var(--green) 270deg,
-          var(--pink) 360deg
-        );
-        mask: radial-gradient(
-          farthest-side,
-          transparent calc(100% - 3px),
-          #000 calc(100% - 3px)
-        );
-        -webkit-mask: radial-gradient(
-          farthest-side,
-          transparent calc(100% - 3px),
-          #000 calc(100% - 3px)
-        );
-        animation: spin 8s linear infinite;
-      }
-
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .avatar-inner {
-        position: relative;
-        z-index: 1;
-        width: 88px;
-        height: 88px;
-        border-radius: 50%;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 0, 204, 0.25),
-          rgba(153, 85, 255, 0.2)
-        );
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--display);
-        font-weight: 900;
-        font-size: 1.5rem;
-        letter-spacing: -0.05em;
-        color: #fff;
-      }
-
-      .hub-name {
-        font-family: var(--display);
-        font-weight: 900;
-        font-size: 1.75rem;
-        letter-spacing: -0.04em;
-        color: #fff;
-        animation: fadeUp 0.5s ease both 0.15s;
-      }
-
-      .hub-name .neo {
-        color: var(--pink);
-      }
-
-      .hub-tagline {
-        font-family: var(--mono);
-        font-size: 0.72rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--text-3);
-        margin-top: 0.4rem;
-        animation: fadeUp 0.5s ease both 0.25s;
-      }
-
-      .hub-desc {
-        font-size: 0.88rem;
-        color: var(--text-2);
-        line-height: 1.7;
-        max-width: 380px;
-        margin-top: 0.85rem;
-        animation: fadeUp 0.5s ease both 0.32s;
-      }
-
       /* ── SECTION ── */
       .section {
         margin-bottom: 1.75rem;
@@ -305,11 +204,9 @@
       .link-grid {
         display: grid;
         gap: 10px;
-      }
-
-      .link-grid.cols-2 {
         grid-template-columns: 1fr 1fr;
       }
+
       .link-grid.cols-1 {
         grid-template-columns: 1fr;
       }
@@ -348,7 +245,6 @@
         pointer-events: none;
       }
 
-      /* top shine on hover */
       .lc::after {
         content: "";
         position: absolute;
@@ -371,9 +267,11 @@
         border-color: var(--border-h);
         transform: translateY(-2px);
       }
+
       .lc:hover::after {
         opacity: 1;
       }
+
       .lc:active {
         transform: scale(0.98);
       }
@@ -383,17 +281,12 @@
         opacity: 0.42;
         filter: blur(1.2px) grayscale(40%);
         cursor: default;
-        pointer-events: none; /* Remove clique e hover */
+        pointer-events: none;
         transform: none !important;
       }
+
       .lc.lc-soon::after {
         display: none;
-      }
-
-
-      /* FEATURED: wider/taller card */
-      .lc.featured {
-        padding: 1.35rem 1.25rem;
       }
 
       /* ── ICON BOX ── */
@@ -413,23 +306,34 @@
         background: var(--pink-dim);
         border: 1px solid rgba(255, 0, 204, 0.22);
       }
-      .lc-icon.green {
-        background: var(--green-dim);
-        border: 1px solid rgba(0, 255, 136, 0.22);
+
+      .lc-icon.neon {
+        background: var(--neon-dim);
+        border: 1px solid var(--neon-glow);
       }
+
+      .lc-icon.acqua {
+        background: var(--acqua-dim);
+        border: 1px solid rgba(0, 255, 170, 0.22);
+        color: var(--acqua);
+      }
+
       .lc-icon.amber {
         background: var(--amber-dim);
         border: 1px solid rgba(255, 170, 0, 0.22);
       }
+
       .lc-icon.blue {
         background: var(--blue-dim);
-        border: 1px solid rgba(0, 170, 255, 0.22);
+        border: 1px solid rgba(0, 170, 200, 0.22);
       }
+
       .lc-icon.purple {
         background: var(--purple-dim);
         border: 1px solid rgba(153, 85, 255, 0.22);
       }
-      .lc-icon.mono {
+
+      .lc-icon.gray {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border);
       }
@@ -488,33 +392,43 @@
         border: 1px solid rgba(255, 0, 204, 0.25);
         color: var(--pink-s);
       }
-      .badge.green {
-        background: var(--green-dim);
-        border: 1px solid rgba(0, 255, 136, 0.25);
-        color: var(--green);
+
+      .badge.neon {
+        background: var(--neon-dim);
+        border: 1px solid var(--neon-glow);
+        color: var(--neon);
       }
+
+      .badge.acqua {
+        background: var(--acqua-dim);
+        border: 1px solid rgba(0, 255, 170, 0.3);
+        color: var(--acqua);
+      }
+
       .badge.amber {
         background: var(--amber-dim);
         border: 1px solid rgba(255, 170, 0, 0.25);
         color: var(--amber);
       }
+
       .badge.blue {
         background: var(--blue-dim);
-        border: 1px solid rgba(0, 170, 255, 0.25);
+        border: 1px solid rgba(0, 170, 200, 0.25);
         color: var(--blue);
       }
+
       .badge.purple {
         background: var(--purple-dim);
         border: 1px solid rgba(153, 85, 255, 0.25);
         color: var(--purple);
       }
-      .badge.mono {
+
+      .badge.gray {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border);
         color: var(--text-3);
       }
 
-      /* pulsing dot for "live" / "soon" */
       .badge.live::before {
         content: "";
         width: 5px;
@@ -525,80 +439,8 @@
       }
 
       @keyframes blink {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.25;
-        }
-      }
-
-      /* ── ARROW ── */
-      .lc-arrow {
-        color: var(--text-3);
-        font-size: 0.85rem;
-        flex-shrink: 0;
-        transition:
-          color 0.2s,
-          transform 0.2s;
-      }
-
-      .lc:hover .lc-arrow {
-        color: var(--pink-s);
-        transform: translate(2px, -2px);
-      }
-
-      /* FEATURED HERO card — full width, more visual weight */
-      .lc-hero {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.85rem;
-        padding: 1.5rem;
-      }
-
-      .lc-hero .lc-icon {
-        width: 52px;
-        height: 52px;
-        border-radius: 18px;
-        font-size: 1.5rem;
-      }
-
-      .lc-hero .lc-title {
-        font-size: 1.1rem;
-      }
-      .lc-hero .lc-sub {
-        font-size: 0.72rem;
-      }
-
-      .lc-hero-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 100%;
-      }
-
-      .lc-hero-arrow {
-        width: 36px;
-        height: 36px;
-        border-radius: 50%;
-        background: var(--pink-dim);
-        border: 1px solid rgba(255, 0, 204, 0.25);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--pink-s);
-        font-size: 0.9rem;
-        flex-shrink: 0;
-        transition:
-          background 0.2s,
-          transform 0.2s;
-      }
-
-      .lc:hover .lc-hero-arrow {
-        background: var(--pink);
-        color: #fff;
-        transform: translate(2px, -2px);
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.25; }
       }
 
       /* ── FOOTER ── */
@@ -641,34 +483,16 @@
         }
       }
 
-      /* stagger sections */
-      .section:nth-child(1) {
-        animation: fadeUp 0.5s ease both 0.35s;
-      }
-      .section:nth-child(2) {
-        animation: fadeUp 0.5s ease both 0.45s;
-      }
-      .section:nth-child(3) {
-        animation: fadeUp 0.5s ease both 0.55s;
-      }
-      .section:nth-child(4) {
-        animation: fadeUp 0.5s ease both 0.65s;
-      }
-      .hub-footer {
-        animation: fadeUp 0.5s ease both 0.75s;
-      }
+      .section:nth-child(1) { animation: fadeUp 0.5s ease both 0.35s; }
+      .section:nth-child(2) { animation: fadeUp 0.5s ease both 0.45s; }
+      .section:nth-child(3) { animation: fadeUp 0.5s ease both 0.55s; }
+      .section:nth-child(4) { animation: fadeUp 0.5s ease both 0.65s; }
+      .hub-footer { animation: fadeUp 0.5s ease both 0.75s; }
 
       /* ── RESPONSIVE ── */
       @media (max-width: 480px) {
-        .link-grid.cols-2 {
-          grid-template-columns: 1fr;
-        }
-        .page {
-          padding: 2rem 1rem 4rem;
-        }
-        .hub-name {
-          font-size: 1.5rem;
-        }
+        .page { padding: 2rem 1rem; }
+        .link-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -677,438 +501,37 @@
     <div class="grain"></div>
 
     <div class="page">
-      <!-- HEADER -->
-      <header class="hub-header">
-        <div class="avatar-wrap">
-          <div class="avatar-ring-mask"></div>
-          <div class="avatar-inner">
-            <img src="/flowoff_logo.webp" alt="NEØ FlowOFF Logo" style="width: 75%; height: 75%; object-fit: contain;" />
+      <HubHeader />
+
+      {sections.map((section) => (
+        <section class="section">
+          <div class="section-label">{section.label}</div>
+          <div class:list={["link-grid", section.cols === 1 && "cols-1"]}>
+            {section.links.map((link) => (
+              <LinkCard
+                href={link.href}
+                title={link.title}
+                sub={link.sub}
+                icon={link.icon}
+                color={link.color}
+                badges={link.badges}
+              />
+            ))}
           </div>
+        </section>
+      ))}
 
-        </div>
-        <h1 class="hub-name"><span class="neo">NEØ</span> FlowOFF</h1>
-        <p class="hub-tagline">Agency Hub · On Chain · Base Mainnet</p>
-        <p class="hub-desc">
-          Infraestrutura Web3 + AI para todos. Pagamentos, tokens, ferramentas e
-          projetos — tudo em um lugar.
-        </p>
-      </header>
-
-      <!-- ── SEÇÃO 1: PRINCIPAL ── -->
-      <section class="section">
-        <div class="section-label">Principal</div>
-
-        <div class="link-grid cols-1" style="margin-bottom: 10px">
-          <!-- TOKEN — hero card -->
-          <a
-            href="https://neoflw.vercel.app/"
-            target="_blank"
-            rel="noopener"
-            class="lc lc-hero"
-          >
-            <div class="lc-hero-row">
-              <div style="display: flex; align-items: center; gap: 0.9rem">
-                <div
-                  class="lc-icon pink"
-                  style="
-                    width: 52px;
-                    height: 52px;
-                    border-radius: 18px;
-                    font-size: 1.4rem;
-                  "
-                >
-                  ⬡
-                </div>
-                <div>
-                  <div class="lc-title" style="font-size: 1.1rem">
-                    $NEOFLW Token
-                  </div>
-                  <div class="lc-sub">neoflw.vercel.app</div>
-                  <div class="lc-badges" style="margin-top: 0.4rem">
-                    <span class="badge green live">Live · Base Mainnet</span>
-                    <span class="badge pink">ERC-20</span>
-                  </div>
-                </div>
-              </div>
-              <div class="lc-hero-arrow">↗</div>
-            </div>
-          </a>
-        </div>
-
-        <div class="link-grid cols-2">
-          <!-- FAÇA SEU SITE -->
-          <a
-            href="https://lp.neoflowoff.agency/"
-            target="_blank"
-            rel="noopener"
-            class="lc featured"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="3"></rect>
-                <path d="M3 9h18M9 21V9"></path>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Faça seu Site</div>
-              <div class="lc-sub">lp.neoflowoff.agency</div>
-              <div class="lc-badges">
-                <span class="badge pink">Agency</span>
-
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-
-          <!-- FLOWPAY -->
-          <a
-            href="https://flowpay.cash/"
-            target="_blank"
-            rel="noopener"
-            class="lc featured"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <path
-                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"
-                ></path>
-                <path
-                  d="M15 8.5c-.83-.5-1.87-.5-2.5-.5C10.57 8 9 9.12 9 10.5c0 1.5 1.5 2 3 2.5s3 1 3 2.5c0 1.38-1.57 2.5-3.5 2.5-.63 0-1.67-.12-2.5-.5"
-                ></path>
-                <path d="M12 6v2M12 16v2"></path>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Link de Pagamentos</div>
-              <div class="lc-sub">flowpay.cash</div>
-              <div class="lc-badges">
-                <span class="badge green">💸 Economize nas taxas</span>
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-        </div>
-
-        <!-- THE ARCHITECT -->
-        <div class="link-grid cols-1" style="margin-top: 10px">
-          <a
-            href="https://neomello.eth.limo/"
-            target="_blank"
-            rel="noopener"
-            class="lc featured"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="url(#grad1)"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <defs>
-                  <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#FF00CC"></stop>
-                    <stop offset="100%" stop-color="#9955ff"></stop>
-                  </linearGradient>
-                </defs>
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M12 2a10 10 0 0 1 0 20A10 10 0 0 1 12 2"></path>
-                <path d="M2 12h4M18 12h4M12 2v4M12 18v4"></path>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">The Architect</div>
-              <div class="lc-sub">neomello.eth.limo</div>
-              <div class="lc-badges">
-                <span class="badge pink">🌐 Interplanetary Gate</span>
-                <span class="badge pink">IPFS</span>
-
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── SEÇÃO 2: TREINAMENTO ── -->
-      <section class="section">
-        <div class="section-label">Treinamento</div>
-        <div class="link-grid cols-2">
-          <!-- TIKTOK SHOP -->
-          <a
-            href="https://tiktokshop.up.railway.app/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">NEØ TikTok Shop</div>
-              <div class="lc-sub">tiktokshop.railway.app</div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-
-          <!-- USE IA -->
-          <a
-            href="#"
-            class="lc lc-soon"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <path
-                  d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"
-                ></path>
-                <circle cx="9" cy="14" r="1" fill="currentColor"></circle>
-                <circle cx="15" cy="14" r="1" fill="currentColor"></circle>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Use IA</div>
-              <div class="lc-sub">proia.vercel.app</div>
-              <div class="lc-badges">
-                <span class="badge pink live">Em breve</span>
-
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-
-        </div>
-      </section>
-
-      <!-- ── SEÇÃO 3: FERRAMENTAS ── -->
-      <section class="section">
-        <div class="section-label">Ferramentas</div>
-        <div class="link-grid cols-1">
-          <a
-            href="https://neo-convert.site/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <path
-                  d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"
-                ></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="9" y1="13" x2="15" y2="13"></line>
-                <line x1="9" y1="17" x2="12" y2="17"></line>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Converta PDFs</div>
-              <div class="lc-sub">neo-convert.site</div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- ── SEÇÃO 4: PROJETOS ── -->
-      <section class="section">
-        <div class="section-label">Projetos</div>
-        <div class="link-grid cols-2">
-          <!-- OPEN SOURCE -->
-          <a
-            href="#"
-            class="lc lc-soon"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="2" y1="12" x2="22" y2="12"></line>
-                <path
-                  d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"
-                ></path>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Open Source</div>
-              <div class="lc-sub">flowpaycore.com</div>
-              <div class="lc-badges">
-                <span class="badge mono">Soon</span>
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-
-
-          <!-- GAMIFICAÇÃO -->
-          <a
-            href="#"
-            class="lc lc-soon"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <polygon
-                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                ></polygon>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Gamificação</div>
-              <div class="lc-sub">wod-landing.vercel.app</div>
-              <div class="lc-badges">
-                <span class="badge pink live">Em breve</span>
-
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-
-
-          <!-- SAAS TOKENIZATION -->
-          <a
-            href="#"
-            class="lc lc-soon"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                <path d="M2 17l10 5 10-5"></path>
-                <path d="M2 12l10 5 10-5"></path>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">SaaS Tokenization</div>
-              <div class="lc-sub">nsfactory.xyz</div>
-              <div class="lc-badges">
-                <span class="badge mono">Soon</span>
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-
-
-          <!-- MAIN SPACE -->
-          <a
-            href="https://neoprotocol.space/"
-            target="_blank"
-            rel="noopener"
-            class="lc"
-          >
-            <div class="lc-icon pink">
-
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              >
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                <polyline points="9 22 9 12 15 12 15 22"></polyline>
-              </svg>
-            </div>
-            <div class="lc-body">
-              <div class="lc-title">Main Space</div>
-              <div class="lc-sub">neoprotocol.space</div>
-              <div class="lc-badges">
-                <span class="badge pink live">Live</span>
-
-              </div>
-            </div>
-            <div class="lc-arrow">↗</div>
-          </a>
-        </div>
-      </section>
-
-      <!-- FOOTER -->
       <footer class="hub-footer">
         <div class="hub-footer-brand">
           <span class="neo">NEØ</span> FlowOFF Agency
         </div>
         <div class="hub-footer-sub">
-          Goiânia · Brasil · Base Mainnet · neoflowoff.eth.limo
+          On Chain · Base Mainnet · neoflowoff.eth.limo
         </div>
       </footer>
     </div>
 
     <script>
-      /* ripple on tap for mobile feel */
       document.querySelectorAll<HTMLElement>(".lc").forEach((el) => {
         el.addEventListener("pointerdown", (e: PointerEvent) => {
           const target = e.currentTarget as HTMLElement;
@@ -1116,24 +539,20 @@
           const rect = target.getBoundingClientRect();
           const size = Math.max(rect.width, rect.height) * 2;
           r.style.cssText = `
-          position:absolute;width:${size}px;height:${size}px;
-          left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px;
-          border-radius:50%;background:rgba(255,255,255,0.05);
-          transform:scale(0);animation:ripple 0.5s ease forwards;pointer-events:none;
-        `;
+            position:absolute;width:${size}px;height:${size}px;
+            left:${e.clientX - rect.left - size / 2}px;top:${e.clientY - rect.top - size / 2}px;
+            border-radius:50%;background:rgba(255,255,255,0.05);
+            transform:scale(0);animation:ripple 0.5s ease forwards;pointer-events:none;
+          `;
           target.appendChild(r);
           setTimeout(() => r.remove(), 600);
         });
       });
     </script>
 
-
     <style>
       @keyframes ripple {
-        to {
-          transform: scale(1);
-          opacity: 0;
-        }
+        to { transform: scale(1); opacity: 0; }
       }
     </style>
   </body>
