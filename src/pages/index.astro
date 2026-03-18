@@ -11,31 +11,15 @@ import { sections } from "../data/links";
     <HubHeader />
 
     {
-      sections.map((section) => {
-        // Separate hero links from regular links
-        const heroLinks = section.links.filter((l) => l.hero);
-        const regularLinks = section.links.filter((l) => !l.hero);
-
-        return (
-          <HubSection label={section.label}>
-            {heroLinks.length > 0 && (
-              <div class="link-grid cols-2" style="margin-bottom:10px">
-
-                {heroLinks.map((link) => (
-                  <LinkCard {...link} />
-                ))}
-              </div>
-            )}
-            {regularLinks.length > 0 && (
-              <div class:list={["link-grid", `cols-${section.cols}`]}>
-                {regularLinks.map((link) => (
-                  <LinkCard {...link} />
-                ))}
-              </div>
-            )}
-          </HubSection>
-        );
-      })
+      sections.map((section) => (
+        <HubSection label={section.label}>
+          <div class="link-grid">
+            {section.links.map((link) => (
+              <LinkCard {...link} />
+            ))}
+          </div>
+        </HubSection>
+      ))
     }
 
     <footer class="hub-footer">
