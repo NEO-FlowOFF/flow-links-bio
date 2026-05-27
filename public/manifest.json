@@ -1,8 +1,9 @@
 {
-  "name": "NEØ FlowOFF Agency Hub",
-  "short_name": "NEØ Hub",
-  "description": "Infraestrutura Web3 + AI na Base Mainnet.",
-  "start_url": "/hub",
+  "name": "neoflowoff.agency hub",
+    "version": "2.0.0",
+    "positioning": "Sistemas de IA, automação e infraestrutura comercial para empresas que precisam vender e operar com mais inteligência.",
+    "identity": "NEØ FlowOFF cria estruturas digitais que organizam atendimento, qualificam oportunidades e reduzem trabalho manual em processos comerciais.",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#06060a",
   "theme_color": "#FF00CC",

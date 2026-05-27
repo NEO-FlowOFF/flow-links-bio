@@ -6,7 +6,7 @@ interface Props {
   description?: string;
 }
 
-const { description = "Sites, Sistemas, Webapps" } = Astro.props;
+const { description = "neo@neoflowoff.agency" } = Astro.props;
 ---
 
 <header class="hub-header">
@@ -19,6 +19,7 @@ const { description = "Sites, Sistemas, Webapps" } = Astro.props;
           alt="NEØ FlowOFF Logo"
           width={43}
           height={43}
+          loading="eager"
           style="object-fit: contain;"
         />
       </div>
@@ -26,16 +27,15 @@ const { description = "Sites, Sistemas, Webapps" } = Astro.props;
   </div>
 
   <h1 class="hub-name">
-    <span class="neo">NEØ</span>
-    <span class="flow">FlowOFF</span>
+    <span class="flow">neoflowoff.agency</span>
   </h1>
 
   <div class="badge-row">
     <span class="header-badge">Agency</span>
     <span class="dot"></span>
-    <span class="header-badge accent">On Chain</span>
+    <span class="header-badge accent">Code is law.</span>
     <span class="dot"></span>
-    <span class="header-badge">Base</span>
+    <span class="header-badge">Multiagents</span>
   </div>
 
   <p class="hub-desc">{description}</p>
@@ -157,9 +157,9 @@ const { description = "Sites, Sistemas, Webapps" } = Astro.props;
   .hub-desc {
     font-family: var(--mono);
     font-size: 0.65rem;
-    color: var(--text-3);
+    color: var(--pink);
     letter-spacing: 0.08em;
-    opacity: 0.6;
+    opacity: 1;
   }
 
   @media (max-width: 480px) {

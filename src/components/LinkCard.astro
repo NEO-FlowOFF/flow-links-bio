@@ -9,16 +9,18 @@ interface Props {
   icon: string;
   color: BadgeColor;
   badges?: Badge[];
+  featured?: boolean;
+  glitch?: boolean;
 }
 
-const { href, title, sub, icon, color, badges = [] } = Astro.props;
+const { href, title, sub, icon, color, badges = [], featured = false, glitch = false } = Astro.props;
 const isSoon = !href || href === "#";
 const Tag = isSoon ? "div" : "a";
 ---
 
 <Tag
   {...(isSoon ? {} : { href, target: "_blank", rel: "noopener" })}
-  class:list={["lc", { "lc-soon": isSoon }]}
+  class:list={["lc", { "lc-soon": isSoon, "lc-featured": featured, "lc-glitch": glitch }]}
 >
   <div class:list={["lc-icon", color]}>
     <Fragment set:html={icon} />

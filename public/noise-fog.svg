@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- fog volumétrico — patches grandes, 7 oitavas -->
+    <filter id="fog-vol" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="turbulence" baseFrequency="0.0055 0.004" numOctaves="7" seed="3" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0.10
+                0 0 0 0 0.10
+                0 0 0 0 0.13
+                0 0 0 0.68 0"/>
+    </filter>
+    <!-- névoa média — transições suaves -->
+    <filter id="fog-mid" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="turbulence" baseFrequency="0.022 0.016" numOctaves="5" seed="9" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0.07
+                0 0 0 0 0.07
+                0 0 0 0 0.09
+                0 0 0 0.48 0"/>
+    </filter>
+    <!-- grain pesado — noise fino fractal -->
+    <filter id="grain" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.72" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0.09
+                0 0 0 0 0.09
+                0 0 0 0 0.10
+                0 0 0 0.58 0"/>
+    </filter>
+    <!-- granulação extra — frequência alta -->
+    <filter id="grain-hi" x="0%" y="0%" width="100%" height="100%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="2" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix"
+        values="0 0 0 0 0.05
+                0 0 0 0 0.05
+                0 0 0 0 0.06
+                0 0 0 0.35 0"/>
+    </filter>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#06060a"/>
+  <rect width="100%" height="100%" filter="url(#fog-vol)"/>
+  <rect width="100%" height="100%" filter="url(#fog-mid)" opacity="0.65"/>
+  <rect width="100%" height="100%" filter="url(#grain)" opacity="0.85"/>
+  <rect width="100%" height="100%" filter="url(#grain-hi)" opacity="0.5"/>
+</svg>

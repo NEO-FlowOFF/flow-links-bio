@@ -1,11 +1,7 @@
-# robots.txt for NEO FlowOFF Hub
-# Link: https://flow-links-bio.pages.dev
+# robots.txt — NEØ FlowOFF Agency
+# https://neoflowoff.agency
 
 User-agent: *
 Allow: /
 
-# Bloquear diretórios sensíveis (se houver no futuro)
-# Disallow: /private/
-
-# Aponta para o Sitemap (se você ativar a integração sitemap do Astro)
-Sitemap: https://flow-links-bio.pages.dev/sitemap-index.xml
+Sitemap: https://neoflowoff.agency/sitemap-index.xml

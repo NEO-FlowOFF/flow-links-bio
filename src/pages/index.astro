@@ -1,7 +1,6 @@
 ---
 import Base from "../layouts/Base.astro";
 import HubHeader from "../components/HubHeader.astro";
-import HubSection from "../components/HubSection.astro";
 import LinkCard from "../components/LinkCard.astro";
 import { sections } from "../data/links";
 ---
@@ -12,7 +11,7 @@ import { sections } from "../data/links";
 
     {
       sections.map((section) => (
-        <section class:list={["section", { "section-soon": section.soon }]}>
+        <section class={`section${section.soon ? " section-soon" : ""}`}>
           <div class="section-label">{section.label}</div>
           <div class="link-grid">
             {section.links.map((link) => (
@@ -23,24 +22,14 @@ import { sections } from "../data/links";
       ))
     }
 
-    <div class="sc-player">
-      <iframe
-        id="sc-widget"
-        width="100%"
-        height="20"
-        scrolling="no"
-        frameborder="no"
-        allow="autoplay"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/modestep/bodybag&auto_play=true&show_artwork=false&show_playcount=false&show_user=false&buying=false&sharing=false&download=false&color=%23c8d41a&visual=false"
-      ></iframe>
-    </div>
 
     <footer class="hub-footer">
       <div class="hub-footer-brand">
-        <span class="neo">NEØ</span> FlowOFF Agency
+        <span class="neo">»</span>
+        NEØPROTOCOL
       </div>
       <div class="hub-footer-sub">
-        On Chain · Base Mainnet · neoflowoff.eth.limo
+        On Chain · Descentralized · WEB 3 
       </div>
     </footer>
   </div>

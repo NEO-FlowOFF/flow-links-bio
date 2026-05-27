@@ -9,7 +9,28 @@
       "Bash(find /Users/nettomello/neomello/NEO-FlowOFF/flow-links-bio -name *.html -type f)",
       "Bash(grep -E \"\\\\.\\(html|htm\\)$\")",
       "Bash(npm run:*)",
-      "Bash(npx astro:*)"
+      "Bash(npx astro:*)",
+      "Bash(rm /Users/nettomello/neomello/NEO-FlowOFF/ceo-escalavel-miniapp/.npmrc)",
+      "Bash(rm /Users/nettomello/neomello/NEO-FlowOFF/neo-flowoff-agency/.npmrc)",
+      "Bash(rm /Users/nettomello/neomello/NEO-FlowOFF/neo-flowoff-pwa/.npmrc)",
+      "Bash(rm /Users/nettomello/neomello/NEO-FlowOFF/neo-landing-open/.npmrc)",
+      "Bash(rm /Users/nettomello/neomello/NEO-FlowOFF/neoflow-content-machine/.npmrc)",
+      "Read(//Users/nettomello/neomello/NEO-FlowOFF/**)",
+      "Bash(pnpm ls *)",
+      "Bash(rm /Users/nettomello/neomello/NEO-FlowOFF/pnpm-workspace.yaml /Users/nettomello/neomello/NEO-FlowOFF/package.json && echo \"done\")",
+      "Bash([ -f \"/Users/nettomello/neomello/$dir/pnpm-workspace.yaml\" ])",
+      "Bash([ -f \"/Users/nettomello/neomello/$dir/package.json\" ])",
+      "Bash(python3 -c 'import json; d=json.load\\(open\\('\\\\''/Users/nettomello/neomello/__TRACKED_VAR__/package.json'\\\\''\\)\\); print\\('\\\\''  name:'\\\\'', d.get\\('\\\\''name'\\\\'','\\\\''?'\\\\''\\), '\\\\''| pm:'\\\\'', d.get\\('\\\\''packageManager'\\\\'','\\\\''?'\\\\''\\)\\)')",
+      "Bash(# neo-avatar-project: quais subpastas têm package.json *)",
+      "Read(//Users/nettomello/neomello/neo-avatar-project/**)",
+      "Bash(# NEO-PROTOCOL: quais subpastas têm package.json *)",
+      "Read(//Users/nettomello/neomello/NEO-PROTOCOL/**)",
+      "Bash(# wodxpro: quais subpastas têm package.json *)",
+      "Read(//Users/nettomello/neomello/wodxpro/**)",
+      "Bash(python3 -c 'import json; d=json.load\\(open\\('\\\\''/Users/nettomello/neomello/__TRACKED_VAR__/package.json'\\\\''\\)\\); print\\(json.dumps\\(d.get\\('\\\\''pnpm'\\\\'',{}\\), indent=2\\)\\)')"
+    ],
+    "additionalDirectories": [
+      "/Users/nettomello/neomello/NEO-FlowOFF"
     ]
   }
 }
