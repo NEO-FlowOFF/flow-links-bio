@@ -1,4 +1,4 @@
-const CACHE = "neo-hub-v1";
+const CACHE = "neo-hub-v2";
 const PRECACHE = ["/", "/favicon.ico", "/apple-touch-icon.png", "/manifest.json"];
 
 self.addEventListener("install", (e) => {
