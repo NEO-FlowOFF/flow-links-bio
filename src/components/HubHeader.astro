@@ -1,6 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import logo from "../../public/flowoff_logo.webp";
 
 interface Props {
   description?: string;
@@ -10,32 +8,13 @@ const { description = "neo@neoflowoff.agency" } = Astro.props;
 ---
 
 <header class="hub-header">
-  <div class="avatar-container">
-    <div class="avatar-wrap">
-      <div class="avatar-ring"></div>
-      <div class="avatar-inner">
-        <Image
-          src={logo}
-          alt="NEØ FlowOFF Logo"
-          width={43}
-          height={43}
-          loading="eager"
-          style="object-fit: contain;"
-        />
-      </div>
-    </div>
-  </div>
 
   <h1 class="hub-name">
     <span class="flow">neoflowoff.agency</span>
   </h1>
 
   <div class="badge-row">
-    <span class="header-badge">Agency</span>
-    <span class="dot"></span>
-    <span class="header-badge accent">Code is law.</span>
-    <span class="dot"></span>
-    <span class="header-badge">Multiagents</span>
+    <span class="header-badge">Agentes de IA, webapps, CRM e flows comerciais para empresas.</span>
   </div>
 
   <p class="hub-desc">{description}</p>
@@ -59,8 +38,8 @@ const { description = "neo@neoflowoff.agency" } = Astro.props;
 
   .avatar-wrap {
     position: relative;
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
   }
 
   .avatar-ring {
@@ -87,8 +66,8 @@ const { description = "neo@neoflowoff.agency" } = Astro.props;
   }
 
   .avatar-inner {
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
     border-radius: 50%;
     background: var(--card);
     border: 1px solid rgba(255, 255, 255, 0.04);
@@ -103,7 +82,7 @@ const { description = "neo@neoflowoff.agency" } = Astro.props;
 
   /* ── NAME ── */
   .hub-name {
-    font-size: 1.1rem;
+    font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 0.02em;
     line-height: 1;
@@ -136,8 +115,7 @@ const { description = "neo@neoflowoff.agency" } = Astro.props;
   .header-badge {
     font-family: var(--mono);
     font-size: 0.55rem;
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.04em;
     color: var(--text-3);
   }
 
@@ -155,10 +133,10 @@ const { description = "neo@neoflowoff.agency" } = Astro.props;
 
   /* ── DESC ── */
   .hub-desc {
-    font-family: var(--mono);
     font-size: 0.65rem;
+    font-weight: 300;
     color: var(--pink);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.02em;
     opacity: 1;
   }
 

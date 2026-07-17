@@ -1,4 +1,4 @@
-export type BadgeColor =  "pink" | "neon" | "blue" | "mono" ;
+export type BadgeColor = "pink" | "neon" | "blue" | "mono";
 
 export interface Badge {
   label: string;
@@ -41,16 +41,16 @@ export const sections: LinkSection[] = [
       },
       {
         href: "https://lp.neoflowoff.agency/",
-        title: "Experience",
-        sub: "Agency",
+        title: "Serviços",
+        sub: "Pacotes Prontos, tráfego pago, sites, meta api",
         icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg>`,
         color: "pink",
         badges: [{ label: "Build", color: "pink" }],
       },
       {
-        href: "https://nsfactory.xyz/",
-        title: "NSFactory",
-        sub: "Fábrica de Tokens",
+        href: "https://sdr.neoflowoff.agency/",
+        title: "AGENT SDR",
+        sub: "Conheça um Agent SDR na prática e tire suas dúvidas",
         icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>`,
         color: "pink",
         badges: [{ label: "Token", color: "pink" }],
@@ -58,7 +58,7 @@ export const sections: LinkSection[] = [
       {
         href: "https://flowpay.cash/",
         title: "FlowPay",
-        sub: "Pagamentos",
+        sub: "Checkout para pagamentos B2B via Pix",
         icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M15 8.5c-.83-.5-1.87-.5-2.5-.5C10.57 8 9 9.12 9 10.5c0 1.5 1.5 2 3 2.5s3 1 3 2.5c0 1.38-1.57 2.5-3.5 2.5-.63 0-1.67-.12-2.5-.5"/><path d="M12 6v2M12 16v2"/></svg>`,
         color: "pink",
         badges: [{ label: "Cash", color: "neon" }],
@@ -81,20 +81,20 @@ export const sections: LinkSection[] = [
     cols: 2,
     links: [
       {
-        href: "https://agente.neoflowoff.agency/",
-        title: "Game IA",
-        sub: "On Telegram",
-        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/></svg>`,
-        color: "pink",
-        badges: [{ label: "AI", color: "pink", pulse: true }],
-      },
-      {
-        href: "https://neomello.eth.limo/",
-        title: "Architect",
+        href: "https://neomello.pro",
+        title: "O arquiteto",
         sub: "neomello.eth",
         icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2a10 10 0 0 1 0 20A10 10 0 0 1 12 2"/><path d="M2 12h4M18 12h4M12 2v4M12 18v4"/></svg>`,
         color: "pink",
         badges: [{ label: "IPFS", color: "pink" }],
+      },
+      {
+        href: "https://neoagentic.com.br/",
+        title: "Agentic IA",
+        sub: "Seu agent pessoal, escolha o seu",
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2z"/><circle cx="9" cy="14" r="1" fill="currentColor"/><circle cx="15" cy="14" r="1" fill="currentColor"/></svg>`,
+        color: "pink",
+        badges: [{ label: "AI", color: "pink", pulse: true }],
       },
       {
         href: "https://neoprotocol.space/",
