@@ -27,7 +27,12 @@
       "Read(//Users/nettomello/neomello/NEO-PROTOCOL/**)",
       "Bash(# wodxpro: quais subpastas têm package.json *)",
       "Read(//Users/nettomello/neomello/wodxpro/**)",
-      "Bash(python3 -c 'import json; d=json.load\\(open\\('\\\\''/Users/nettomello/neomello/__TRACKED_VAR__/package.json'\\\\''\\)\\); print\\(json.dumps\\(d.get\\('\\\\''pnpm'\\\\'',{}\\), indent=2\\)\\)')"
+      "Bash(python3 -c 'import json; d=json.load\\(open\\('\\\\''/Users/nettomello/neomello/__TRACKED_VAR__/package.json'\\\\''\\)\\); print\\(json.dumps\\(d.get\\('\\\\''pnpm'\\\\'',{}\\), indent=2\\)\\)')",
+      "WebFetch(domain:developers.soundcloud.com)",
+      "WebFetch(domain:on.soundcloud.com)",
+      "Bash(git push:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "additionalDirectories": [
       "/Users/nettomello/neomello/NEO-FlowOFF"
