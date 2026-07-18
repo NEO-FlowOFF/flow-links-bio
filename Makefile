@@ -36,17 +36,7 @@ audit:
 
 lint:
 	@echo "🧹 Verificando erros de código..."
-	@pnpm astro check 2>&1 | tee /tmp/astro-check.log; \
-	if grep -q "Cannot read properties of undefined (reading 'fileExists')" /tmp/astro-check.log; then \
-		echo "⚠️  astro check falhou por conflito de peer TypeScript no workspace."; \
-		echo "🔁 Usando tsc --noEmit como validação alternativa..."; \
-		pnpm tsc --noEmit || (echo "❌ Erros de TypeScript encontrados!" && exit 1); \
-		echo "✅ Lint OK (via tsc)."; \
-	elif grep -q "error" /tmp/astro-check.log; then \
-		echo "❌ Erros de lint encontrados! Corrija-os antes de continuar." && exit 1; \
-	else \
-		echo "✅ Lint OK."; \
-	fi
+	pnpm astro check
 
 # --- Limpeza ---
 

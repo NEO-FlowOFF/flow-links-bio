@@ -1,92 +1,27 @@
-# MEMORY.md // NODE NEØ MELLØ
+# MEMORY.md // FLOW LINKS BIO
 
-Memória operacional curta do workspace `~/neomello`.
+## Decisões ativas
 
-Leia este arquivo quando a pergunta for:
-"o que já foi decidido?"
+- O repo publica `https://neoflowoff.agency` como site estático Astro.
+- A URL canônica usa HTTPS sem `www`.
+- O sitemap deve conter apenas rotas reais deste repo.
+- `pnpm-workspace.yaml` local é um boundary intencional; não removê-lo.
+- `allowBuilds` autoriza somente `esbuild` e `sharp`.
+- Overrides locais mantêm `fast-uri` e `js-yaml` em versões corrigidas.
+- Comandos pnpm locais não devem auditar, instalar ou validar siblings.
+- TypeScript permanece em 6.x enquanto `astro check` depender da API
+  programática ausente no TypeScript 7.
+- Páginas antigas sem substituta, como `/vejacomo/`, podem permanecer 404;
+  não redirecionar indiscriminadamente para a home.
 
----
-
-## Decisões Já Tomadas
-
-- `~/neomello` é raiz local multi-repo, não monorepo.
-- `NEO-PROTOCOL/` é hub local da organização NEO-PROTOCOL.
-- `NEO-PROTOCOL/neobot-orchestrator/config/ecosystem.json`
-  é a fonte canônica da topologia NEØ.
-- FlowPay é parte integrante da stack NEØ.
-- FlowPay é a capacidade financeira interna.
-- Nexus é o event hub interno.
-- Consumers comuns de pagamento entram por
-  `nexusEvents.subscriptions[]`.
-- Secrets ficam fora dos docs e fora do Git.
-
----
-
-## Padrões Do Workspace
-
-- Operar sempre no repo soberano correto.
-- Ler o `AGENTS.md` mais próximo antes de editar.
-- Preferir `pnpm` quando o projeto for Node.
-- Usar `mise` para Python e runtimes fora de Node.
-- Usar Azure como cloud preferencial.
-- Preservar fronteiras entre organizações.
-
----
-
-## Comandos Seguros
+## Validação
 
 ```bash
-cd /Users/nettomello/neomello/NEO-PROTOCOL
-pnpm run workspace:doctor
+pnpm install
+make lint
+make build
+make audit
 ```
 
-```bash
-cd /Users/nettomello/neomello/NEO-PROTOCOL/neobot-orchestrator
-pnpm analyze
-```
-
-```bash
-cd /Users/nettomello/neomello/NEO-PROTOCOL/neo-nexus
-pnpm build
-pnpm lint
-pnpm test
-```
-
----
-
-## Coisas Proibidas
-
-- Escrever em `~/.config/secrets/*`.
-- Escrever em `~/neomello/secrets/*`.
-- Escrever direto em `~/.zshrc`.
-- Instalar `nvm`, `asdf`, `pyenv` ou similares.
-- Executar install/build no root `~/neomello`.
-- Criar webhook externo por consumer quando Nexus resolve.
-
----
-
-## Próximos Passos Validados
-
-1. Propagar `CONTEXT.md`, `MEMORY.md`, `SKILL.md`
-   nos hubs e repos com operação recorrente.
-2. Padronizar FlowPay como capability interna.
-3. Migrar consumers de pagamento para subscriptions declarativas.
-4. Manter documentação operacional curta e auditável.
-
----
-
-## Próxima Leitura
-
-Depois de `MEMORY.md`, leia `SKILL.md`.
-
-## Stored Secrets Reference
-
-### Available Keys
-- ASI1 API: `~/.asi1-api-key`
-- VoiceTune API: `~/.vt-api-key`
-- MCP configs: `secrets/mcp/.env`
-
-### Load in memory
-```bash
-source ~/neomello/load-secrets.sh
-```
+`make audit` deve reportar somente caminhos iniciados neste pacote, nunca
+nomes de projetos vizinhos.

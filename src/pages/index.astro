@@ -2,12 +2,14 @@
 import Base from "../layouts/Base.astro";
 import HubHeader from "../components/HubHeader.astro";
 import LinkCard from "../components/LinkCard.astro";
+import SiteNav from "../components/SiteNav.astro";
 import { sections } from "../data/links";
 ---
 
 <Base>
   <div class="page">
     <HubHeader />
+    <SiteNav />
 
     {
       sections.map((section) => (
@@ -30,8 +32,6 @@ import { sections } from "../data/links";
         width="267"
         height="476"
         style="border:none;overflow:hidden;border-radius:16px;display:block;"
-        scrolling="no"
-        frameborder="0"
         allowfullscreen="true"
         allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
       ></iframe>

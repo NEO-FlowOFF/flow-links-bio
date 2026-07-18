@@ -1,112 +1,45 @@
-<!-- markdownlint-disable MD003 MD007 MD013 MD022 MD023 MD025 MD029 MD032 MD033 MD034 -->
+# SETUP.md // FLOW LINKS BIO
 
-# CONFIGURAÇÃO TÉCNICA · NEØ:one
+## Requisitos
 
-```text
-========================================
-       NEØ:One · TECHNICAL SETUP
-========================================
-Stack: Astro + ASI1 + Redis + Postgres
-Environment: Node.js >=22.12.0
-========================================
-```
+- Node.js 22 ou superior.
+- pnpm 11.13.1, resolvido pelo Corepack a partir de `package.json`.
 
-## ⧇ Pipeline de Dados
-
-▓▓▓ FLUXO SERVER-SIDE (chat.ts)
-────────────────────────────────────────
-
-```text
-       ┌──────────────────────────────┐
-       │   1. SYSTEM PROMPT           │
-       │   (system-prompt.md)         │
-       └──────────────┬───────────────┘
-                      │ (Persona + Regras)
-       ┌──────────────▼───────────────┐
-       │   2. CONTEXT                 │
-       │   (CONTEXT.json)             │
-       └──────────────┬───────────────┘
-                      │ (Dados da Agência)
-       ┌──────────────▼───────────────┐
-       │   3. USER INPUT              │
-       │   (Mensagem Atual)           │
-       └──────────────┬───────────────┘
-                      │ (ASI1 Streaming SSE)
-       ┌──────────────▼───────────────┐
-       │   4. NEØ:one RESPONSE        │
-       │   + REGIS LEAD EXTRACTION    │
-       │   (PostgreSQL upsert)        │
-       └──────────────┬───────────────┘
-                      │ (Persistência)
-       ┌──────────────▼───────────────┐
-       │   5. SESSION MEMORY          │
-       │   (Gravação via Redis)       │
-       └──────────────────────────────┘
-```
-
-────────────────────────────────────────
-
-## ⨷ Stack Técnica
-
-▓▓▓ INFRAESTRUTURA
-────────────────────────────────────────
-└─ Framework: Astro 6.x (SSR · Node Adapter)
-└─ Runtime:   Node.js >=22.12.0
-└─ LLM:       ASI1 AI (api.asi1.ai)
-└─ Memory:    Redis (Railway)
-└─ Leads:     PostgreSQL (Railway)
-└─ Notificações: Resend API
-└─ Deploy:    Railway
-
-────────────────────────────────────────
-
-## ◬ Operação
-
-▓▓▓ COMANDOS (pnpm)
-────────────────────────────────────────
-
-### Instalação
+## Instalação
 
 ```bash
+corepack enable
 pnpm install
 ```
 
-### Desenvolvimento
+O `pnpm-workspace.yaml` local inclui somente este pacote. Se o install
+mostrar nomes de projetos vizinhos, interrompa e restaure esse arquivo.
+
+## Desenvolvimento
 
 ```bash
 pnpm dev
 ```
 
-### Build
+## Validação
 
 ```bash
-pnpm build
+make lint
+make build
+make audit
 ```
 
-────────────────────────────────────────
+- `make lint` executa `astro check`.
+- `make build` gera o site estático em `dist/`.
+- `make audit` verifica apenas dependências deste repo e falha enquanto
+  houver vulnerabilidades conhecidas.
 
-## ⍟ Variáveis de Ambiente
+## Smoke test SEO
 
-```text
-ASI1_API_KEY=    # Chave ASI1 AI
-ASI1_MODEL=asi1  # Modelo (padrão: asi1)
-REDIS_URL=       # Redis Railway (interno ou externo)
-DATABASE_URL=    # PostgreSQL Railway
-SITE_URL=        # Domínio oficial (https://chat.neoflowoff.agency)
-RESEND_API_KEY=  # Chave da API do Resend (para disparos de Handoff)
+```bash
+rg '<loc>' dist/sitemap-0.xml
+rg 'canonical' dist/index.html dist/*/index.html
 ```
 
-────────────────────────────────────────
-
-```text
-▓▓▓ Neo Mello
-────────────────────────────────────────
-Fundador · NEO FlowOFF
-neo@neoflowoff.agency
-
-"Automação de marketing e infraestrutura
-digital autônoma."
-
-Security by design.
-────────────────────────────────────────
-```
+O domínio publicado deve responder em `https://neoflowoff.agency`, com
+HTTP e `www` redirecionando para essa origem canônica.

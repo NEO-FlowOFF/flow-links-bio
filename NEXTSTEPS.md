@@ -50,14 +50,6 @@ da interface soberana NEØ:One.
 - [x] Campos base de follow-up adicionados em `leads` para não perder oportunidade antes da automação.
 - [ ] OpenAI Ads Measurement Pixel: instalar no `Base.astro` somente com `PUBLIC_OPENAI_ADS_PIXEL_ID` configurado e sem expor dados pessoais.
 - [ ] Eventos de campanha: medir `page_viewed`, `chat_started`, `lead_created`, `appointment_scheduled`, `qualified_lead` e `quote_requested`.
-- [ ] Privacidade: não enviar nome, email, telefone, mensagens do chat, prompts ou dados sensíveis para eventos de ads.
-- [ ] Próximo snapshot de `leads`: executar somente sob demanda, usando query sanitizada e sem registrar PII.
-- [ ] Deduplicação futura: gerar `event_id` interno quando houver envio browser + servidor, reaproveitando o mesmo ID no Pixel e na Conversions API.
-- [ ] Dashboard de aquisição: consolidar visitas, conversas iniciadas, leads criados, leads qualificados, reuniões e origem de campanha.
-- [ ] Dashboard operacional: acompanhar latência ASI1, erros de streaming, taxa de handoff, Regis/PostgreSQL e disponibilidade de Redis.
-- [ ] FlowPay: mapear oferta de serviços, orçamento/proposta e cobrança recorrente como capability interna da stack NEØ.
-- [ ] FlowPay + Nexus: quando houver eventos financeiros, preferir subscriptions declarativas em `nexusEvents.subscriptions[]` antes de criar webhook isolado.
-- [ ] Funil futuro: conectar campanha → chat → Regis → proposta → FlowPay → dashboard, mantendo controle humano e auditabilidade.
 
 ────────────────────────────────────────
 

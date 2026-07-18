@@ -1,43 +1,32 @@
-# NEØ.FLOWOFF LINKS
+# NEØ FlowOFF Agency Hub
 
-Esta é a vitrine comercial independente da agência FlowOFF. O objetivo deste repositório é fornecer uma experiência de pouso (landing page) ultrarrápida, premium e focada em conversão para tráfego pago.
+Hub institucional estático publicado em
+`https://neoflowoff.agency`.
 
-## Diferenciais
+O projeto apresenta serviços e capacidades públicas do ecossistema
+NEØ FlowOFF. Ele é um child repo soberano dentro do workspace
+`NEO-FlowOFF`; integra-se com outros nós por links e contratos, sem
+compartilhar código-fonte.
 
-High Speed: Carregamento estático otimizado sem dependências pesadas.
-Design Premium: Estética moderna em Dark Mode, utilizando Glassmorphism e Mesh Gradients.
-SEO Ready: Meta tags configuradas para compartilhamento social e indexação.
-Foco em Conversão: CTAs diretos para o ecossistema e WhatsApp da agência.
+## Stack
 
-## Tech Stack
+- Astro 7 com saída estática.
+- TypeScript 6.
+- CSS local e componentes Astro.
+- Sitemap gerado por `@astrojs/sitemap`.
+- pnpm 11.13.1 com workspace local isolado.
 
-Frontend: HTML5 Semântico, CSS3 (Vanilla)
-Icons: Lucide Icons
-Fonts: Google Fonts (Inter)
-Responsividade: Mobile First
+## Rotas indexáveis
 
-## Estrutura
+- `/`
+- `/servicos/`
+- `/agentes-de-ia/`
+- `/automacao-comercial/`
+- `/infraestrutura-digital/`
+- `/cases/`
+- `/contato/`
 
-index.html: Página principal.
-landing_v2.css: Design System e estilos.
-public/: Assets, logos e imagens.
+## Operação
 
-────────++++++
-
-```signature
-▓▓▓ NΞØ MELLØ
-────────++++++
-Core Architect · NΞØ Protocol
-neo@neoprotocol.space
-
-"Code is law. Expand until
-silence becomes structure."
-────────++++++
-```
-
-```name         ▄
-░█▄ ░█░█▀▀▀ ▄▀▀▀▄ ▄  ▄▄▄  ▄▄▄▄    ▄▄▖
-░█ █░█░█▀▀▀░█░▄▀█ ░ █░  █ █░  █░▐▛▀▀░
-░█░░▀█░█▄▄▄░▀▄▄▄▀ ▀ ▀▄▄▄▀ █   █ ▝▚▄▄▖   ░░▄▀  DEX.HUB
-            ▀
-```
+Consulte `SETUP.md` para instalação e validação. O contrato técnico e
+os boundaries estão em `CONTEXT.md`.

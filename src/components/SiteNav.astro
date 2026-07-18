@@ -1,0 +1,36 @@
+<nav class="site-nav" aria-label="Navegação principal">
+  <a href="/">Início</a>
+  <a href="/servicos/">Serviços</a>
+  <a href="/agentes-de-ia/">Agentes de IA</a>
+  <a href="/automacao-comercial/">Automação</a>
+  <a href="/infraestrutura-digital/">Infraestrutura</a>
+  <a href="/cases/">Cases</a>
+  <a href="/contato/">Contato</a>
+</nav>
+
+<style>
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 0 auto 1.5rem;
+  }
+
+  a {
+    padding: 0.45rem 0.65rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--text-2);
+    font-family: var(--mono);
+    font-size: 0.55rem;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease;
+  }
+
+  a:hover,
+  a:focus-visible {
+    border-color: rgba(255, 0, 204, 0.35);
+    color: var(--text);
+  }
+</style>
