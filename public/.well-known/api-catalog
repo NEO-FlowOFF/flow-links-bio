@@ -1,0 +1,18 @@
+{
+  "name": "neoflowoff agency public services",
+  "description": "Machine-readable catalog of public services and documentation pages published by NEØ FlowOFF.",
+  "services": [
+    {
+      "name": "Agentes de IA",
+      "url": "/agentes-de-ia/"
+    },
+    {
+      "name": "Automação comercial",
+      "url": "/automacao-comercial/"
+    },
+    {
+      "name": "Sites & Web apps",
+      "url": "/sites-e-web-apps/"
+    }
+  ]
+}
