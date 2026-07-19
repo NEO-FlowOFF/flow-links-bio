@@ -4,4 +4,6 @@
 User-agent: *
 Allow: /
 
+Content-Signal: ai-train=no, search=yes, ai-input=no
+
 Sitemap: https://neoflowoff.agency/sitemap-index.xml

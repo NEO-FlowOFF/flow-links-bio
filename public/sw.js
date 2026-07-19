@@ -1,5 +1,5 @@
-const CACHE = "neo-hub-v2";
-const PRECACHE = ["/", "/favicon.ico", "/apple-touch-icon.png", "/manifest.json"];
+const CACHE = "neo-hub-v3";
+const PRECACHE = ["/", "/favicon.ico", "/apple-touch-icon.png", "/manifest.json", "/.well-known/api-catalog"];
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
